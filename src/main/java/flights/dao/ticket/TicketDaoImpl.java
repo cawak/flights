@@ -13,7 +13,7 @@ public class TicketDaoImpl implements TicketDao {
     Cache<Ticket> ticketsCache = new Cache<>();
     TicketsDB ticketsDB = new TicketsDB();
 
-    public boolean isTicketAvailable(String ticketId){
+    public synchronized boolean isTicketAvailable(String ticketId){
         Ticket ticket = ticketsCache.get(ticketId);
         if (ticket != null){
             return ticket.isAvailable();

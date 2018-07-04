@@ -11,7 +11,7 @@ public class BaggageDaoImpl implements BaggageDao {
     private BaggageDB baggageDB = new BaggageDB();
 
     @Override
-    public Baggage getBaggage(String baggageId) {
+    public synchronized Baggage getBaggage(String baggageId) {
         Baggage baggage = baggageCache.get(baggageId);
         if (baggage != null){
             return baggage;

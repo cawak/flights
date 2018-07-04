@@ -10,7 +10,7 @@ public class CouponDaoImpl implements CouponDao {
     private CouponDB couponDB = new CouponDB();
     private Cache<Coupon> cache = new Cache<>();
 
-    public Coupon getCoupon(String id){
+    public synchronized Coupon getCoupon(String id){
         Coupon coupon = cache.get(id);
         if (coupon != null){
             return coupon;
